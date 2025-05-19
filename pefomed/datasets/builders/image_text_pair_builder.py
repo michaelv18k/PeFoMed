@@ -10,7 +10,7 @@ from pefomed.common.registry import registry
 
 from pefomed.datasets.builders.base_dataset_builder import BaseDatasetBuilder
 from pefomed.datasets.datasets.image_text_pair_datasets import ImageTextPairDataset, ImageTextPairInstructDataset
-from pefomed.datasets.datasets.general.laion_dataset import LaionDataset, LaionInstructDataset
+# from pefomed.datasets.datasets.general.laion_dataset import LaionDataset, LaionInstructDataset
 from pefomed.datasets.datasets.medical.mscxr_dataset import MSCXRDataset, MSCXREvalDataset
 
 @registry.register_builder("mscxr")
