@@ -29,9 +29,9 @@ from pefomed.datasets.builders import *
 from pefomed.models import *
 from pefomed.processors import *
 from pefomed.runners import *
-# from pefomed.tasks import *
-from pefomed.tasks.vqa import VQATask, MedVQATask
-from pefomed.tasks.base_task import BaseTask      
+from pefomed.tasks import *
+# from pefomed.tasks.vqa import VQATask, MedVQATask
+# from pefomed.tasks.base_task import BaseTask      
 
 
 import warnings

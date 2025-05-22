@@ -15,7 +15,9 @@ from pefomed.common.registry import registry
 from pefomed.datasets.builders import *
 from pefomed.models import *
 from pefomed.processors import *
-from pefomed.tasks import *
+from pefomed.tasks.vqa import VQATask, MedVQATask
+from pefomed.tasks.base_task import BaseTask
+
 
 
 root_dir = os.path.dirname(os.path.abspath(__file__))
