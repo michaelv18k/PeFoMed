@@ -14,16 +14,16 @@ datasets:
         train:
           url:
               # TODO make this order insensitive
-              - login
-              - openai.com/auth/login
-              - openai.com/auth/login
+              # - login
+              # - openai.com/auth/login
+              # - openai.com/auth/login
               -
           storage:
-              - /mnt/sda/hjl/data/medical/vqa/data_RAD/trainset.json
+              - /kaggle/input/processed-rad-vqa-dataset/trainset.json
         test:
           url:
-            - /mnt/sda/hjl/data/medical/vqa/data_RAD/testset.json
+            # - /mnt/sda/hjl/data/medical/vqa/data_RAD/testset.json
           storage:
-            - /mnt/sda/hjl/data/medical/vqa/data_RAD/testset.json
+            - /kaggle/input/processed-rad-vqa-dataset/testset.json
       images:
-          storage: /mnt/sda/hjl/data/medical/vqa/data_RAD/images
+          storage: /kaggle/input/processed-rad-vqa-dataset/images
