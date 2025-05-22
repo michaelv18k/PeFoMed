@@ -19,14 +19,14 @@ from pefomed.datasets.builders.image_text_pair_builder import (
     # Laion400MBuilder,
     # Laion400MInstructBuilder
 )
-from pefomed.datasets.builders.classification_builder import (
-    NLVRBuilder,
-    SNLIVisualEntailmentBuilder,
-    SNLIVisualEntailmentInstructBuilder,
-    ViolinEntailmentInstructBuilder,
-    ViolinEntailmentBuilder,
-    ESC50ClassificationBuilder
-)
+# from pefomed.datasets.builders.classification_builder import (
+#     NLVRBuilder,
+#     SNLIVisualEntailmentBuilder,
+#     SNLIVisualEntailmentInstructBuilder,
+#     ViolinEntailmentInstructBuilder,
+#     ViolinEntailmentBuilder,
+#     ESC50ClassificationBuilder
+# )
 from pefomed.datasets.builders.imagefolder_builder import ImageNetBuilder
 from pefomed.datasets.builders.video_qa_builder import (
     MSRVTTQABuilder, 
