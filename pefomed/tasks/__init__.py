@@ -30,18 +30,18 @@ def setup_task(cfg):
 
 __all__ = [
     "BaseTask",
-    "AOKVQATask",
-    "RetrievalTask",
-    "CaptionTask",
+    # "AOKVQATask",
+    # "RetrievalTask",
+    # "CaptionTask",
     "VQATask",
-    "GQATask",
-    "VQARCTask",
-    "GQARCTask",
-    "MultimodalClassificationTask",
+    # "GQATask",
+    # "VQARCTask",
+    # "GQARCTask",
+    # "MultimodalClassificationTask",
     # "VideoQATask",
     # "VisualEntailmentTask",
-    "ImageTextPretrainTask",
-    "DialogueTask",
-    "TextToImageGenerationTask",
-    "DisCRNTask"
+    # "ImageTextPretrainTask",
+    # # "DialogueTask",
+    # "TextToImageGenerationTask",
+    # "DisCRNTask"
 ]
