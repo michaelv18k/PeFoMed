@@ -25,7 +25,7 @@ datasets:
             # - /mnt/sda/hjl/data/medical/vqa/data_RAD/testset.json
           storage:
             - /kaggle/input/processed-rad-vqa-dataset/testset.json
-        valid:
+        val:
           # url:
             # - /mnt/sda/hjl/data/medical/vqa/data_RAD/testset.json
           storage:
