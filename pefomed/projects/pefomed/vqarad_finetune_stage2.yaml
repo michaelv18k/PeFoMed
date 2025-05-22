@@ -4,7 +4,7 @@ model:
   max_txt_len: 1024
   image_size: 448
   end_sym: "</s>"
-  llama_model: "Llama-2-7b-chat-hf"
+  llama_model: "meta-llama/Llama-2-7b-chat-hf"
   ckpt: "/kaggle/input/pretrain-pefomed/checkpoint_best.pth"
   use_grad_checkpoint: True
   chat_template: True
