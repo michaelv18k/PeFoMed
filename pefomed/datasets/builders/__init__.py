@@ -105,7 +105,7 @@ from pefomed.datasets.builders.medical_builder import (
 from pefomed.common.registry import registry
 
 __all__ = [
-    "BlipDiffusionFinetuneBuilder",
+    # "BlipDiffusionFinetuneBuilder",
     "COCOCapBuilder",
     "COCORetrievalBuilder",
     "COCOVQABuilder",
