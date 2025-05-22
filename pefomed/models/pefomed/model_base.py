@@ -7,8 +7,11 @@ import torch.nn as nn
 from peft import (
     LoraConfig,
     get_peft_model,
-    prepare_model_for_int8_training,
+    # prepare_model_for_int8_training,
+    prepare_model_for_kbit_training
 )
+# from peft import prepare_model_for_kbit_training
+
 from transformers import LlamaTokenizer
 
 from pefomed.common.dist_utils import download_cached_file
@@ -467,7 +470,7 @@ class ModelBase(BaseModel):
             )
 
         if lora_r > 0:
-            llama_model = prepare_model_for_int8_training(llama_model)
+            llama_model = prepare_model_for_kbit_training(llama_model)
             loraconfig = LoraConfig(
                 r=lora_r,
                 bias="none",
