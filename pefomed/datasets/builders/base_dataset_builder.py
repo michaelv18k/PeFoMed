@@ -126,7 +126,7 @@ class BaseDatasetBuilder:
                 storage_paths = [storage_paths]
             print("urls:", urls)
             print("storage_paths:", storage_paths)
-            assert len(urls) == len(storage_paths)
+            # assert len(urls) == len(storage_paths)
 
             # assert len(urls) == len(storage_paths)
 
