@@ -446,7 +446,8 @@ class ModelBase(BaseModel):
     def init_llm(cls, llama_model_path, low_resource=False, low_res_device=0, lora_r=0,
                  lora_target_modules=["q_proj", "v_proj"], **lora_kargs):
         logging.info('Loading LLAMA')
-        llama_tokenizer = LlamaTokenizer.from_pretrained(llama_model_path, use_fast=False)
+        # llama_tokenizer = LlamaTokenizer.from_pretrained(llama_model_path, use_fast=False)
+        llama_tokenizer = LlamaTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", use_fast=False)
         llama_tokenizer.pad_token = "$$"
 
         if low_resource:
