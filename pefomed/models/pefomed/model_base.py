@@ -28,7 +28,7 @@ class ModelBase(BaseModel):
             use_grad_checkpoint=False,
             vit_precision="fp16",
             freeze_vit=True,
-            llama_model="",
+            llama_model="meta-llama/Llama-2-7b-chat-hf",
             max_txt_len=32,
             max_context_len=3800,
             prompt_template="",
