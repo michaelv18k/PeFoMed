@@ -27,15 +27,15 @@ from pefomed.datasets.builders.image_text_pair_builder import (
 #     ViolinEntailmentBuilder,
 #     ESC50ClassificationBuilder
 # )
-from pefomed.datasets.builders.imagefolder_builder import ImageNetBuilder
-from pefomed.datasets.builders.video_qa_builder import (
-    MSRVTTQABuilder, 
-    MSVDQABuilder,
-    MSRVTTQAInstructBuilder,
-    MSVDQAInstructBuilder,
-    MusicAVQABuilder,
-    MusicAVQAInstructBuilder
-)
+# from pefomed.datasets.builders.imagefolder_builder import ImageNetBuilder
+# from pefomed.datasets.builders.video_qa_builder import (
+#     MSRVTTQABuilder, 
+#     MSVDQABuilder,
+#     MSRVTTQAInstructBuilder,
+#     MSVDQAInstructBuilder,
+#     MusicAVQABuilder,
+#     MusicAVQAInstructBuilder
+# )
 
 from pefomed.datasets.builders.medical_builder import (
     ROCOBuilder,
@@ -43,31 +43,31 @@ from pefomed.datasets.builders.medical_builder import (
     CLEFBuilder
 )
 
-from pefomed.datasets.builders.vqa_builder import (
-    COCOVQABuilder,
-    COCOVQAInstructBuilder,
-    OKVQABuilder,
-    OKVQAInstructBuilder,
-    AOKVQABuilder,
-    AOKVQAInstructBuilder,
-    VGVQABuilder,
-    VGVQAInstructBuilder,
-    GQABuilder,
-    GQAInstructBuilder,
-    IconQABuilder,
-    IconQAInstructBuilder,
-    ScienceQABuilder,
-    ScienceQAInstructBuilder,
-    OCRVQABuilder,
-    OCRVQAInstructBuilder,
-    VizWizVQABuilder
-)
-from pefomed.datasets.builders.retrieval_builder import (
-    MSRVTTRetrievalBuilder,
-    DiDeMoRetrievalBuilder,
-    COCORetrievalBuilder,
-    Flickr30kBuilder,
-)
+# from pefomed.datasets.builders.vqa_builder import (
+#     COCOVQABuilder,
+#     COCOVQAInstructBuilder,
+#     OKVQABuilder,
+#     OKVQAInstructBuilder,
+#     AOKVQABuilder,
+#     AOKVQAInstructBuilder,
+#     VGVQABuilder,
+#     VGVQAInstructBuilder,
+#     GQABuilder,
+#     GQAInstructBuilder,
+#     IconQABuilder,
+#     IconQAInstructBuilder,
+#     ScienceQABuilder,
+#     ScienceQAInstructBuilder,
+#     OCRVQABuilder,
+#     OCRVQAInstructBuilder,
+#     VizWizVQABuilder
+# )
+# from pefomed.datasets.builders.retrieval_builder import (
+#     MSRVTTRetrievalBuilder,
+#     DiDeMoRetrievalBuilder,
+#     COCORetrievalBuilder,
+#     Flickr30kBuilder,
+# )
 
 # from pefomed.datasets.builders.audio_caption_builder import (
 #     AudioSetBuilder,
@@ -98,9 +98,9 @@ from pefomed.datasets.builders.retrieval_builder import (
 #     VisDialInstructBuilder
 # )
 
-from pefomed.datasets.builders.text_to_image_generation_builder import BlipDiffusionFinetuneBuilder
+# from pefomed.datasets.builders.text_to_image_generation_builder import BlipDiffusionFinetuneBuilder
 
-from pefomed.datasets.builders.discrn_builders import DiscrnImagePcBuilder, DiscrnAudioVideoBuilder
+# from pefomed.datasets.builders.discrn_builders import DiscrnImagePcBuilder, DiscrnAudioVideoBuilder
 
 from pefomed.common.registry import registry
 
