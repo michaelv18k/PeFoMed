@@ -28,7 +28,7 @@ class ModelBase(BaseModel):
             use_grad_checkpoint=False,
             vit_precision="fp16",
             freeze_vit=True,
-            llama_model="meta-llama/Llama-2-7b-chat-hf",
+            llama_model="",
             max_txt_len=32,
             max_context_len=3800,
             prompt_template="",
@@ -443,11 +443,12 @@ class ModelBase(BaseModel):
         else:
             return contextlib.nullcontext()
 
-    def init_llm(cls, llama_model_path, low_resource=False, low_res_device=0, lora_r=0,
+    def init_llm(self,cls, llama_model_path, low_resource=False, low_res_device=0, lora_r=0,
                  lora_target_modules=["q_proj", "v_proj"], **lora_kargs):
         logging.info('Loading LLAMA')
         # llama_tokenizer = LlamaTokenizer.from_pretrained(llama_model_path, use_fast=False)
         llama_tokenizer = LlamaTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf",token=True, use_fast=False)
+
         llama_tokenizer.pad_token = "$$"
 
         if low_resource:
