@@ -12,16 +12,16 @@ datasets:
       # Be careful not to append minus sign (-) before split to avoid itemizing
       annotations:
         train:
-          url:
+          # url:
               # TODO make this order insensitive
               # - login
               # - openai.com/auth/login
               # - openai.com/auth/login
-              -
+        
           storage:
               - /kaggle/input/processed-rad-vqa-dataset/trainset.json
         test:
-          url:
+          # url:
             # - /mnt/sda/hjl/data/medical/vqa/data_RAD/testset.json
           storage:
             - /kaggle/input/processed-rad-vqa-dataset/testset.json
