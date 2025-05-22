@@ -118,7 +118,7 @@ class BaseDatasetBuilder:
         for split in splits:
             info = anns[split]
 
-            urls, storage_paths = info.get("url", None), info.storage
+            urls, storage_paths = info.get("url", []), info.storage
 
             if isinstance(urls, str):
                 urls = [urls]
