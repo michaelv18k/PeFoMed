@@ -459,7 +459,7 @@ class ModelBase(BaseModel):
                 # llama_model_path,
                 "meta-llama/Llama-2-7b-chat-hf",
                 torch_dtype=torch.float16,
-                load_in_8bit=True,
+                load_in_4bit=True,
                 device_map="auto"
                 # device_map={'': low_res_device}
             )
