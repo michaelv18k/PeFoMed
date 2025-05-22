@@ -453,10 +453,12 @@ class ModelBase(BaseModel):
 
         if low_resource:
             llama_model = LlamaForCausalLM.from_pretrained(
-                llama_model_path,
+                # llama_model_path,
+                "meta-llama/Llama-2-7b-chat-hf",
                 torch_dtype=torch.float16,
                 load_in_8bit=True,
-                device_map={'': low_res_device}
+                device_map="auto"
+                # device_map={'': low_res_device}
             )
         else:
             llama_model = LlamaForCausalLM.from_pretrained(
