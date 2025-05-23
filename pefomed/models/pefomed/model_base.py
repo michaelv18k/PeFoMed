@@ -450,14 +450,16 @@ class ModelBase(BaseModel):
                  lora_target_modules=["q_proj", "v_proj"], **lora_kargs):
         logging.info('Loading LLAMA')
         # llama_tokenizer = LlamaTokenizer.from_pretrained(llama_model_path, use_fast=False)
-        llama_tokenizer = LlamaTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf",token=True, use_fast=False)
+        # llama_tokenizer = LlamaTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf",token=True, use_fast=False)
+        llama_tokenizer = LlamaTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1",token=True, use_fast=False)
 
         llama_tokenizer.pad_token = "$$"
 
         if low_resource:
             llama_model = LlamaForCausalLM.from_pretrained(
                 # llama_model_path,
-                "meta-llama/Llama-2-7b-chat-hf",
+                # "meta-llama/Llama-2-7b-chat-hf",
+                "mistralai/Mistral-7B-v0.1",
                 torch_dtype=torch.float16,
                 load_in_4bit=True,
                 device_map="auto"
