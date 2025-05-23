@@ -492,7 +492,8 @@ class ModelBase(BaseModel):
 
     def init_llm(cls, llama_model_path, low_resource=True, low_res_device=0, lora_r=8,
                 lora_target_modules=["q_proj", "v_proj"], **lora_kargs):
-        logging.info('Loading LLAMA')
+        # logging.info('Loading LLAMA')
+        print('Loading LLAMA')
 
         # Load tokenizer
         llama_tokenizer = LlamaTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1", use_fast=False)
@@ -530,7 +531,8 @@ class ModelBase(BaseModel):
             for name, param in llama_model.named_parameters():
                 param.requires_grad = False
 
-        logging.info('Loading LLAMA Done')
+        # logging.info('Loading LLAMA Done')
+        print('Loading LLAMA Done')
         return llama_model, llama_tokenizer
 
 
