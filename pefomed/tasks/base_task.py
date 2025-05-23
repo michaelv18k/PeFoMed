@@ -26,11 +26,24 @@ class BaseTask:
     def setup_task(cls, **kwargs):
         return cls()
 
+    # def build_model(self, cfg):
+    #     model_config = cfg.model_cfg
+
+    #     model_cls = registry.get_model_class(model_config.arch)
+    #     return model_cls.from_config(model_config)
+
     def build_model(self, cfg):
+        print("🔧 Entering build_model")
         model_config = cfg.model_cfg
+        print("📦 model_config.arch:", model_config.arch)
 
         model_cls = registry.get_model_class(model_config.arch)
-        return model_cls.from_config(model_config)
+        print("📚 Got model class:", model_cls)
+
+        model = model_cls.from_config(model_config)
+        print("✅ Model created successfully")
+        return model
+
 
     def build_datasets(self, cfg):
         """
