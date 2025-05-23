@@ -34,9 +34,10 @@ class PeFoMed(ModelBase):
             chat_template=False,
             use_grad_checkpoint_llm=False,
             max_context_len=3800,
-            low_resource=False,  # use 8 bit and put vit in cpu
+            low_resource=True,  # use 8 bit and put vit in cpu
             device_8bit=0,  # the device of 8bit model should be set when loading and cannot be changed anymore.
     ):
+        print("🔹 PeFoMed __init__: starting")
         super().__init__(
             vit_model=vit_model,
             img_size=img_size,
@@ -56,6 +57,7 @@ class PeFoMed(ModelBase):
             lora_alpha=lora_alpha,
             lora_dropout=lora_dropout,
         )
+        print("🔹 PeFoMed __init__: finished")
 
         img_f_dim = self.visual_encoder.num_features * 4 # img_f_dim=5632
         self.llama_proj = nn.Linear( # Linear(in_features=5632, out_features=4096, bias=True)

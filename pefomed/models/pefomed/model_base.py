@@ -36,7 +36,7 @@ class ModelBase(BaseModel):
             max_context_len=3800,
             prompt_template="",
             end_sym='\n',
-            low_resource=False,  # use 8 bit and put vit in cpu
+            low_resource=True,  # use 8 bit and put vit in cpu
             device_8bit=0,  # the device of 8bit model should be set when loading and cannot be changed anymore.
             lora_r=0,  # lora_r means lora is not used
             lora_target_modules=["q_proj", "v_proj"],
@@ -44,6 +44,7 @@ class ModelBase(BaseModel):
             lora_dropout=0.05,
     ):
         super().__init__()
+        print("🔸 ModelBase __init__: starting")
 
         self.llama_model, self.llama_tokenizer = self.init_llm(
             llama_model_path=llama_model,
@@ -54,6 +55,7 @@ class ModelBase(BaseModel):
             lora_alpha=lora_alpha,
             lora_dropout=lora_dropout,
         )
+        print("🔸 ModelBase __init__: finished")
 
         self.visual_encoder, self.ln_vision = self.init_vision_encoder(
             vit_model, img_size, drop_path_rate, use_grad_checkpoint, vit_precision, freeze_vit
@@ -535,7 +537,7 @@ class ModelBase(BaseModel):
         print('Loading LLAMA Done')
         return llama_model, llama_tokenizer
 
-    
+
 
     def load_from_pretrained(self, url_or_filename):
         if is_url(url_or_filename):
