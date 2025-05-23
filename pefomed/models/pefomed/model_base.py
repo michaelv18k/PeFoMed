@@ -535,7 +535,7 @@ class ModelBase(BaseModel):
         print('Loading LLAMA Done')
         return llama_model, llama_tokenizer
 
-
+    
 
     def load_from_pretrained(self, url_or_filename):
         if is_url(url_or_filename):

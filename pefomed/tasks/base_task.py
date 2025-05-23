@@ -42,6 +42,7 @@ class BaseTask:
 
         model = model_cls.from_config(model_config)
         print("✅ Model created successfully")
+        print(model)
         return model
 
 
