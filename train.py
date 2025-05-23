@@ -97,8 +97,11 @@ def main():
     cfg.pretty_print()
 
     task = tasks.setup_task(cfg)
+    print("ADFAFADFAGAGSDFAFAFAFASDFASDFASFASFADFADF1")
     datasets = task.build_datasets(cfg)
+    print("ADFAFADFAGAGSDFAFAFAFASDFASDFASFASFADFADF1")
     model = task.build_model(cfg)
+    print("ADFAFADFAGAGSDFAFAFAFASDFASDFASFASFADFADF1")
     print(model)
     runner = get_runner_class(cfg)(
         cfg=cfg, task=task, model=model, datasets=datasets

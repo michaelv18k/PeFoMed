@@ -490,7 +490,7 @@ class ModelBase(BaseModel):
     #     logging.info('Loading LLAMA Done')
     #     return llama_model, llama_tokenizer
 
-    def init_llm(cls, llama_model_path, low_resource=True, low_res_device=0, lora_r=8,
+    def init_llm(self, llama_model_path, low_resource=True, low_res_device=0, lora_r=8,
                 lora_target_modules=["q_proj", "v_proj"], **lora_kargs):
         # logging.info('Loading LLAMA')
         print('Loading LLAMA')
