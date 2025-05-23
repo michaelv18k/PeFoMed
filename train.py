@@ -104,7 +104,7 @@ def main():
         cfg=cfg, task=task, model=model, datasets=datasets
     )
 
-
+    print("✅ Finished calling runner.train()")
     runner.train()
 
 
