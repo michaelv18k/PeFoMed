@@ -551,14 +551,14 @@ class ModelBase(BaseModel):
 
         # Load tokenizer (use local path if available)
         tokenizer_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
-        llama_tokenizer = LlamaTokenizer.from_pretrained("/kaggle/input/llama-model", use_fast=False)
+        llama_tokenizer = LlamaTokenizer.from_pretrained("/kaggle/input/llama-model/llama2", use_fast=False)
         llama_tokenizer.pad_token = "$$"
 
         if low_resource:
             # Load quantized model (4-bit) from local path or Hugging Face
             model_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
             llama_model = LlamaForCausalLM.from_pretrained(
-                "/kaggle/input/llama-model",
+                "/kaggle/input/llama-model/llama2",
                 torch_dtype=torch.float16,
                 load_in_4bit=True,  # Saves memory
                 device_map={"": low_res_device}  # Use specified GPU
