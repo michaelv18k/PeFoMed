@@ -507,7 +507,7 @@ class ModelBase(BaseModel):
                 "mistralai/Mistral-7B-v0.1",
                 torch_dtype=torch.float16,
                 load_in_4bit=True,        # <= key for memory saving
-                device_map="auto"
+                device_map={"":0}  
             )
         else:
             # Normal 16-bit loading
