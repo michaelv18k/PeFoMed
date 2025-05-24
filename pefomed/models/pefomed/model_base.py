@@ -553,7 +553,8 @@ class ModelBase(BaseModel):
         tokenizer_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
         # llama_tokenizer = LlamaTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1", use_fast=False)
         # llama_tokenizer.pad_token = "$$"
-        tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
+        # tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
+        tokenizer = AutoTokenizer.from_pretrained("HuggingFaceH4/zephyr-7b-alpha")
         tokenizer.pad_token = tokenizer.eos_token
 
         if low_resource:
@@ -567,7 +568,8 @@ class ModelBase(BaseModel):
                 bnb_4bit_compute_dtype=torch.float16
             )
             llama_model = AutoModelForCausalLM.from_pretrained(
-                "mistralai/Mistral-7B-v0.1",
+                # "mistralai/Mistral-7B-v0.1",
+                "HuggingFaceH4/zephyr-7b-alpha",
                 quantization_config=quant_config,
                 device_map={"": low_res_device}
             )
