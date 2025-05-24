@@ -95,7 +95,7 @@ def main():
     setup_logger()
 
     cfg.pretty_print()
-    print(cfg)
+    print(vars(cfg))
     task = tasks.setup_task(cfg)
     print("ADFAFADFAGAGSDFAFAFAFASDFASDFASFASFADFADF1")
     datasets = task.build_datasets(cfg)
