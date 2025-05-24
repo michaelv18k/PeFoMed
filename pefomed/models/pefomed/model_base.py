@@ -493,32 +493,85 @@ class ModelBase(BaseModel):
     #     logging.info('Loading LLAMA Done')
     #     return llama_model, llama_tokenizer
 
-    def init_llm(self, llama_model_path, low_resource=True, low_res_device=0, lora_r=8,
-                lora_target_modules=["q_proj", "v_proj"], **lora_kargs):
-        # logging.info('Loading LLAMA')
+    # def init_llm(self, llama_model_path, low_resource=True, low_res_device=0, lora_r=8,
+    #             lora_target_modules=["q_proj", "v_proj"], **lora_kargs):
+    #     # logging.info('Loading LLAMA')
+    #     print('Loading LLAMA')
+
+    #     # Load tokenizer
+    #     llama_tokenizer = LlamaTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1", use_fast=False)
+    #     llama_tokenizer.pad_token = "$$"
+
+    #     if low_resource:
+    #         # Load quantized model into GPU using 4-bit weights (saves memory)
+    #         llama_model = LlamaForCausalLM.from_pretrained(
+    #             "mistralai/Mistral-7B-v0.1",
+    #             torch_dtype=torch.float16,
+    #             load_in_4bit=True,        # <= key for memory saving
+    #             device_map={"":0}  
+    #         )
+    #     else:
+    #         # Normal 16-bit loading
+    #         llama_model = LlamaForCausalLM.from_pretrained(
+    #             llama_model_path,
+    #             torch_dtype=torch.float16,
+    #         )
+
+    #     if lora_r > 0:
+    #         # Prepare model for Low-Rank Adaptation (LoRA)
+    #         llama_model = prepare_model_for_kbit_training(llama_model)
+    #         loraconfig = LoraConfig(
+    #             r=lora_r,
+    #             bias="none",
+    #             task_type="CAUSAL_LM",
+    #             target_modules=lora_target_modules,
+    #             **lora_kargs
+    #         )
+    #         llama_model = get_peft_model(llama_model, loraconfig)
+    #         llama_model.print_trainable_parameters()
+    #     else:
+    #         # Freeze all layers if not using LoRA
+    #         for name, param in llama_model.named_parameters():
+    #             param.requires_grad = False
+
+    #     # logging.info('Loading LLAMA Done')
+    #     print('Loading LLAMA Done')
+    #     return llama_model, llama_tokenizer
+
+    def init_llm(
+        self, 
+        llama_model_path="/kaggle/input/llama-model",  # Path to your downloaded model
+        low_resource=True, 
+        low_res_device=0, 
+        lora_r=8,
+        lora_target_modules=["q_proj", "v_proj"], 
+        **lora_kargs
+    ):
         print('Loading LLAMA')
 
-        # Load tokenizer
-        llama_tokenizer = LlamaTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1", use_fast=False)
+        # Load tokenizer (use local path if available)
+        tokenizer_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
+        llama_tokenizer = LlamaTokenizer.from_pretrained(tokenizer_path, use_fast=False)
         llama_tokenizer.pad_token = "$$"
 
         if low_resource:
-            # Load quantized model into GPU using 4-bit weights (saves memory)
+            # Load quantized model (4-bit) from local path or Hugging Face
+            model_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
             llama_model = LlamaForCausalLM.from_pretrained(
-                "mistralai/Mistral-7B-v0.1",
+                model_path,
                 torch_dtype=torch.float16,
-                load_in_4bit=True,        # <= key for memory saving
-                device_map={"":0}  
+                load_in_4bit=True,  # Saves memory
+                device_map={"": low_res_device}  # Use specified GPU
             )
         else:
-            # Normal 16-bit loading
+            # Load full model (16-bit) from local path
             llama_model = LlamaForCausalLM.from_pretrained(
                 llama_model_path,
                 torch_dtype=torch.float16,
             )
 
+        # LoRA setup (unchanged)
         if lora_r > 0:
-            # Prepare model for Low-Rank Adaptation (LoRA)
             llama_model = prepare_model_for_kbit_training(llama_model)
             loraconfig = LoraConfig(
                 r=lora_r,
@@ -530,11 +583,9 @@ class ModelBase(BaseModel):
             llama_model = get_peft_model(llama_model, loraconfig)
             llama_model.print_trainable_parameters()
         else:
-            # Freeze all layers if not using LoRA
             for name, param in llama_model.named_parameters():
                 param.requires_grad = False
 
-        # logging.info('Loading LLAMA Done')
         print('Loading LLAMA Done')
         return llama_model, llama_tokenizer
 
