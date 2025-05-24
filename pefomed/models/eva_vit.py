@@ -441,9 +441,10 @@ def create_eva_vit_g(img_size=224,drop_path_rate=0.4,use_checkpoint=False,precis
     )  
     # url = "https://storage.googleapis.com/sfr-vision-language-research/pefomed/models/BLIP2/eva_vit_g.pth"
     url = "/kaggle/input/vit-model/eva_vit_g.pth"
-    cached_file = download_cached_file(
-        url, check_hash=False, progress=True
-    )
+    # cached_file = download_cached_file(
+    #     url, check_hash=False, progress=True
+    # )
+    cached_file= "/kaggle/input/vit-model/eva_vit_g.pth"
     state_dict = torch.load(cached_file, map_location="cpu")    
     interpolate_pos_embed(model,state_dict)
     
