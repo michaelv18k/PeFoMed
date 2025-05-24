@@ -19,7 +19,7 @@ from pefomed.common.utils import is_url
 from pefomed.models.base_model import BaseModel
 from pefomed.models.eva_vit import create_eva_vit_g
 from pefomed.models.pefomed.modeling_llama import LlamaForCausalLM
-
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 class ModelBase(BaseModel):
 
@@ -557,12 +557,25 @@ class ModelBase(BaseModel):
         if low_resource:
             # Load quantized model (4-bit) from local path or Hugging Face
             model_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
-            llama_model = LlamaForCausalLM.from_pretrained(
-                "meta-llama/Llama-2-7b-chat-hf",
-                torch_dtype=torch.float16,
-                load_in_4bit=True,  # Saves memory
-                device_map={"": low_res_device}  # Use specified GPU
+
+            torch.cuda.empty_cache()
+            quant_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.float16
             )
+            llama_model = AutoModelForCausalLM.from_pretrained(
+                "mistralai/Mistral-7B-v0.1",
+                quantization_config=quant_config,
+                device_map={"": low_res_device}
+            )
+
+            # llama_model = LlamaForCausalLM.from_pretrained(
+            #     "meta-llama/Llama-2-7b-chat-hf",
+            #     torch_dtype=torch.float16,
+            #     load_in_4bit=True,  # Saves memory
+            #     device_map={"": low_res_device}  # Use specified GPU
+            # )
         else:
             # Load full model (16-bit) from local path
             llama_model = LlamaForCausalLM.from_pretrained(
