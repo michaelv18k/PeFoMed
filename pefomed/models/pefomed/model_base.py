@@ -58,10 +58,10 @@ class ModelBase(BaseModel):
         self.llama_model,self.llama_tokenizer=None,None
         print("🔸 ModelBase __init__: finished")
 
-        self.visual_encoder, self.ln_vision = self.init_vision_encoder(
-            vit_model, img_size, drop_path_rate, use_grad_checkpoint, vit_precision, freeze_vit
-        )
-
+        # self.visual_encoder, self.ln_vision = self.init_vision_encoder(
+        #     vit_model, img_size, drop_path_rate, use_grad_checkpoint, vit_precision, freeze_vit
+        # )
+        self.visual_encoder, self.ln_vision = None,None
         self.max_txt_len = max_txt_len
         self.max_context_len = max_context_len
         self.end_sym = end_sym
