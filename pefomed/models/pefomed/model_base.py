@@ -58,10 +58,10 @@ class ModelBase(BaseModel):
         # self.llama_model,self.llama_tokenizer=None,None
         print("🔸 ModelBase __init__: finished")
 
-        self.visual_encoder, self.ln_vision = self.init_vision_encoder(
-            vit_model, img_size, drop_path_rate, use_grad_checkpoint, vit_precision, freeze_vit
-        )
-        # self.visual_encoder, self.ln_vision = None,None
+        # self.visual_encoder, self.ln_vision = self.init_vision_encoder(
+        #     vit_model, img_size, drop_path_rate, use_grad_checkpoint, vit_precision, freeze_vit
+        # )
+        self.visual_encoder, self.ln_vision = None,None
         self.max_txt_len = max_txt_len
         self.max_context_len = max_context_len
         self.end_sym = end_sym
@@ -551,14 +551,14 @@ class ModelBase(BaseModel):
 
         # Load tokenizer (use local path if available)
         tokenizer_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
-        llama_tokenizer = LlamaTokenizer.from_pretrained("/kaggle/input/llama-model/llama2", use_fast=False)
+        llama_tokenizer = LlamaTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", use_fast=False)
         llama_tokenizer.pad_token = "$$"
 
         if low_resource:
             # Load quantized model (4-bit) from local path or Hugging Face
             model_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
             llama_model = LlamaForCausalLM.from_pretrained(
-                "/kaggle/input/llama-model/llama2",
+                "meta-llama/Llama-2-7b-chat-hf",
                 torch_dtype=torch.float16,
                 load_in_4bit=True,  # Saves memory
                 device_map={"": low_res_device}  # Use specified GPU
