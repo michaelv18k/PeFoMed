@@ -46,16 +46,16 @@ class ModelBase(BaseModel):
         super().__init__()
         print("🔸 ModelBase __init__: starting")
 
-        self.llama_model, self.llama_tokenizer = self.init_llm(
-            llama_model_path=llama_model,
-            low_resource=low_resource,
-            low_res_device=device_8bit,
-            lora_r=lora_r,
-            lora_target_modules=lora_target_modules,
-            lora_alpha=lora_alpha,
-            lora_dropout=lora_dropout,
-        )
-        # self.llama_model,self.llama_tokenizer=None,None
+        # self.llama_model, self.llama_tokenizer = self.init_llm(
+        #     llama_model_path=llama_model,
+        #     low_resource=low_resource,
+        #     low_res_device=device_8bit,
+        #     lora_r=lora_r,
+        #     lora_target_modules=lora_target_modules,
+        #     lora_alpha=lora_alpha,
+        #     lora_dropout=lora_dropout,
+        # )
+        self.llama_model,self.llama_tokenizer=None,None
         print("🔸 ModelBase __init__: finished")
 
         self.visual_encoder, self.ln_vision = self.init_vision_encoder(
