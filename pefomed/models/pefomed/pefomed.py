@@ -59,7 +59,13 @@ class PeFoMed(ModelBase):
         )
         print("🔹 PeFoMed __init__: finished")
 
-        img_f_dim = self.visual_encoder.num_features * 4 # img_f_dim=5632
+        # img_f_dim = self.visual_encoder.num_features * 4 # img_f_dim=5632
+        if self.visual_encoder is not None:
+            img_f_dim = self.visual_encoder.num_features * 4  # original line
+        else:
+            img_f_dim = 5632  # or whatever value is expected downstream
+            print("⚠️ ViT skipped — using default img_f_dim:", img_f_dim)
+
         self.llama_proj = nn.Linear( # Linear(in_features=5632, out_features=4096, bias=True)
             img_f_dim, self.llama_model.config.hidden_size
         )
