@@ -551,7 +551,7 @@ class ModelBase(BaseModel):
 
         # Load tokenizer (use local path if available)
         tokenizer_path = llama_model_path if os.path.exists(llama_model_path) else "meta-llama/Llama-2-7b-chat-hf"
-        llama_tokenizer = LlamaTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", use_fast=False)
+        llama_tokenizer = LlamaTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1", use_fast=False)
         llama_tokenizer.pad_token = "$$"
 
         if low_resource:
